@@ -1,7 +1,9 @@
 package com.maxsaeta.loginwithfragment
 
 import android.Manifest
+import android.R.id
 import android.app.Activity
+import android.app.Application
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
@@ -9,9 +11,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
-import android.net.Uri
 import android.os.Bundle
-import android.os.NetworkOnMainThreadException
 import android.util.Log
 import android.view.KeyEvent
 import android.view.WindowManager
@@ -20,18 +20,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.maxsaeta.loginwithfragment.databinding.ActivityMainBinding
-import com.maxsaeta.loginwithfragment.databinding.NointernetBinding
 import com.maxsaeta.loginwithfragment.databinding.FragmentWebviewloginBinding
-
+import com.maxsaeta.loginwithfragment.databinding.NointernetBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
 
 
 class MainActivity : AppCompatActivity(), OnFragmentActionListener {
@@ -44,13 +42,21 @@ class MainActivity : AppCompatActivity(), OnFragmentActionListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var bindingDialog : NointernetBinding
     private lateinit var bindingWebView : FragmentWebviewloginBinding
-
-
+    private var mFirebaseAnalytics: FirebaseAnalytics? = null
+    val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, R.drawable.logo.toString())
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, R.string.app_name.toString())
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "MangaKakalot")
+        mFirebaseAnalytics!!.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+
         val myWebView = Dialog(this)
         bindingWebView = FragmentWebviewloginBinding.inflate(layoutInflater)
         myWebView.setContentView(bindingWebView.root)
@@ -98,6 +104,7 @@ class MainActivity : AppCompatActivity(), OnFragmentActionListener {
 
     override fun onLastCapClicked(lasturl: String) {
         println(lasturl)
+
         bindingWebView.fragwebView.isVisible = true
         webView = webviewlogin.newInstance(lasturl, direccion)
         replaceFragment(webView)
