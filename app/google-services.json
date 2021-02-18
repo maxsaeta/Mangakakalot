@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "910730837156",
+    "project_id": "mangakakalot-a7454",
+    "storage_bucket": "mangakakalot-a7454.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910730837156:android:bfed5df97f5722b4693a31",
+        "android_client_info": {
+          "package_name": "com.maxsaeta.loginwithfragment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910730837156-a7c8hi2tffc6goiisuimdfk6mu630ecu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvaAytstcP2sDG5ZScSRkIfVE1Is6RLeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910730837156-a7c8hi2tffc6goiisuimdfk6mu630ecu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
