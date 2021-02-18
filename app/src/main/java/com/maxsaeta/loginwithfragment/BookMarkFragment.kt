@@ -123,18 +123,3 @@ class BookMarkFragment : Fragment() {
             }
     }
 }
-
-/*
-<div class="panel-bookmark">
-	<div class="bookmark-item">
-		<a rel="nofollow" href="https://manganelo.com/manga/aq920357"><img class="img-loading" src="https://avt.mkklcdnv6temp.com/15/u/19-158=3499706.jpg"></a>
-		<div class="item-right">
-			<p class="item-row-one">
-				<a class="bookmark_remove" data-id="2797711"><i></i>Remove</a>
-				<a class="item-story-name text-nowrap color-red" href="https://manganel=o.com/manga/aq920357">Rich Player</a>
-			</p>
-		<span class="item-title text-nowrap">Viewed: <a class="a-h" href="htt=ps://manganelo.com/chapter/aq920357/chapter_84">Chapter 84</a></span>
-		<span class="item-title text-nowrap">Current: <a class="a-h" style="c=olor: #079eda;" href="https://manganelo.com/chapter/aq920357/chapter_185"=>Chapter 185</a></span>
-	</div>
-</div>
- */
